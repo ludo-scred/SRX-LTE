@@ -1,4 +1,8 @@
 import signal
+import xml.parsers.expat
+
+import requests.exceptions
+import urllib3.exceptions
 from huawei_lte_api.Client import Client
 from huawei_lte_api.Connection import Connection
 import huawei_lte_api.exceptions
@@ -282,17 +286,26 @@ def try_airbox_login():
         pass
     else:
         return "ip"
-    try:
-        with Connection(f'http://{details_dict["login"]}:{details_dict["password"]}@{details_dict["ip_addr"]}') \
-                as connection:
-            Client(connection)
-            return "OK"
-    except huawei_lte_api.exceptions.LoginErrorUsernamePasswordWrongException:
-        return "password"
-    except huawei_lte_api.exceptions.LoginErrorUsernamePasswordOverrunException:
-        return "overrun"
-    except KeyError:
-        return "router"
+    if __name__ == '__main__':
+        try:
+            with Connection(f'http://{details_dict["login"]}:{details_dict["password"]}@{details_dict["ip_addr"]}') \
+                    as connection:
+                Client(connection)
+                return "OK"
+        except huawei_lte_api.exceptions.LoginErrorUsernamePasswordWrongException:
+            return "password"
+        except huawei_lte_api.exceptions.LoginErrorUsernamePasswordOverrunException:
+            return "overrun"
+        except KeyError:
+            return "router"
+        except xml.parsers.expat.ExpatError:
+            return "router"
+        except urllib3.exceptions.MaxRetryError:
+            return "ip"
+        except requests.exceptions.ConnectTimeout:
+            return "ip"
+        except requests.exceptions.ConnectionError:
+            return "ip"
 
 
 Timer(1, open_browser).start()
