@@ -1,0 +1,7 @@
+V0.1 (20-06-2022)
+- Mise en production de la version beta.
+
+V0.11 (20-06-2022)
+- Modification mineur du générateur Excel. Bug sur la longueur des headers.
+- Ajout du bouton "Quitter" sur la page de configuration (resetPassword.html)
+- Prise en charge de l'erreur quand une autre box est connectée avec la même adresse IP.

@@ -72,6 +72,9 @@ def index() -> str:
     if "overrun" in is_connected:
         error = "Connexion impossible à la Airbox. Trop de tentatives infructueuses." \
                 "Veuillez redémarrer la Airbox."
+    if "router" in is_connected:
+        error = "Connexion impossible à la Airbox. Un autre routeur ayant la même IP est " \
+                "déjà sur le réseau."
     config = configparser.RawConfigParser()
     config.read('airbox.cfg')
     details_dict = dict(config.items('DETAILS'))
@@ -288,6 +291,8 @@ def try_airbox_login():
         return "password"
     except huawei_lte_api.exceptions.LoginErrorUsernamePasswordOverrunException:
         return "overrun"
+    except KeyError:
+        return "router"
 
 
 Timer(1, open_browser).start()

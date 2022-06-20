@@ -38,45 +38,45 @@
                         </div></div>
                         <table id="table1" style="display: none;">
                             <tr>
-                                <th style="width: 9vw;">DOWN</th>
-                                <th style="width: 9vw;">UP</th>
-                                <th style="width: 7vw;">PING</th>
+                                <th class="sig" style="width: 9vw;">DOWN</th>
+                                <th class="sig" style="width: 9vw;">UP</th>
+                                <th class="sig" style="width: 7vw;">PING</th>
                             </tr>
                             <tr>
-                                <td id="dl"></td>
-                                <td id="up"></td>
-                                <td id="ping"></td>
+                                <td id="dl" class="sig" ></td>
+                                <td id="up" class="sig" ></td>
+                                <td id="ping" class="sig" ></td>
                             </tr>
                         </table>
                         <table id="table2" style="display: none;">
                             <tr>
-                                <th style="width: 6vw;">RSRP</th>
-                                <th style="width: 6vw;">RSRQ</th>
-                                <th style="width: 5vw;">RSSI</th>
-                                <th style="width: 4vw;">SINR</th>
-                                <th style="width: 4vw;">RFM</th>
+                                <th class="sig" style="width: 6vw;">RSRP</th>
+                                <th class="sig" style="width: 6vw;">RSRQ</th>
+                                <th class="sig" style="width: 5vw;">RSSI</th>
+                                <th class="sig" style="width: 4vw;">SINR</th>
+                                <th class="sig" style="width: 4vw;">RFM</th>
                             </tr>
                             <tr>
-                                <td id="trsrp"></td>
-                                <td id="trsrq"></td>
-                                <td id="trssi"></td>
-                                <td id="tsinr"></td>
-                                <td id="rfm"></td>
+                                <td id="trsrp" class="sig" ></td>
+                                <td id="trsrq" class="sig" ></td>
+                                <td id="trssi" class="sig" ></td>
+                                <td id="tsinr" class="sig" ></td>
+                                <td id="rfm" class="sig" ></td>
 
                             </tr>
                         </table>
                         <table id="table3" style="display: none;">
                             <tr>
-                                <th style="width: 6.5vw;">RSRP(avg)</th>
-                                <th style="width: 6.5vw;">RSRQ(avg)</th>
-                                <th style="width: 6vw;">RSSI(avg)</th>
-                                <th style="width: 6vw;">SINR(avg)</th>
+                                <th class="sig" style="width: 6.5vw;">RSRP(avg)</th>
+                                <th class="sig" style="width: 6.5vw;">RSRQ(avg)</th>
+                                <th class="sig" style="width: 6vw;">RSSI(avg)</th>
+                                <th class="sig" style="width: 6vw;">SINR(avg)</th>
                             </tr>
                             <tr>
-                                <td id="arsrp"></td>
-                                <td id="arsrq"></td>
-                                <td id="arssi"></td>
-                                <td id="asinr"></td>
+                                <td id="arsrp" class="sig" ></td>
+                                <td id="arsrq" class="sig" ></td>
+                                <td id="arssi" class="sig" ></td>
+                                <td id="asinr" class="sig" ></td>
 
                             </tr>
                         </table>
@@ -109,12 +109,43 @@
       <ul>
         <li>6m : de 0 à -1 dBm </li>
         <li>20 m : de -3 à -5 dBm</li>
-        <li>2 antennes de 6M misent bout à bout : -10 dBm</li><br><br>
+        <li>2 antennes de 6M mises bout à bout : -10 dBm</li>
+      </ul>
+      <p><h4>Valeurs min/max par défaut:</h4></p>
+      <table id="signaux" style="color: black;">
+            <tr id="info_sig">
+                <th id="info_sig" colspan="2" style="width: 6.5vw;">RSRP</th>
+                <th id="info_sig" colspan="2" style="width: 6.5vw;">RSRQ</th>
+                <th id="info_sig" colspan="2" style="width: 6vw;">RSSI</th>
+                <th id="info_sig" colspan="2" style="width: 6vw;">SINR</th>
+            </tr>
+                <tr id="info_sig">
+                    <th id="info_sig" class="min">Good</th>
+                    <th id="info_sig" class="max">Poor</th>
+                    <th id="info_sig" class="min">Good</th>
+                    <th id="info_sig" class="max">Poor</th>
+                    <th id="info_sig" class="min">Good</th>
+                    <th id="info_sig" class="max">Poor</th>
+                    <th id="info_sig" class="min">Good</th>
+                    <th id="info_sig" class="max">Poor</th>
+                </tr>
+            <tr>
+                <td id="info_sig">-80</td>
+                <td id="info_sig">-100</td>
+                <td id="info_sig">-10</td>
+                <td id="info_sig">-20</td>
+                <td id="info_sig">-65</td>
+                <td id="info_sig">-85</td>
+                <td id="info_sig">20</td>
+                <td id="info_sig">0</td>
+            </tr>
+      </table><br>
           <em>A noter que lors d'un speedtest, les résultats sont automatiquement envoyés par mail à l'adresse:
           airbox@perso.smart-rx.com à des fins d'optimisation des calculs des valeurs.<br>
-              <u>Ces données sont anonymisées.</u>
+          <u>Ces données sont anonymisées.</u>
           </em>
-</ul>
+      <br>
+      <em style="margin-left: 21vw;"><u>Développé par ludovic.retail@smart-rx.com</u></em>
   </div>
 
 </div>

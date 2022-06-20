@@ -58,15 +58,37 @@ width: 25vw;
 float: left;
 }
 
-table {
+#table1,#table2, #table3{
+border: 1px solid;
+text-align: center;
+color: white;
 width: 25vw;
 float: left;
 }
 
-table, th, td {
+.sig{
 border: 1px solid;
 text-align: center;
 color: white;
+}
+
+#signaux {
+    border: 1px solid;
+    text-align: center;
+    font-size: smaller;
+}
+
+#info_sig {
+    border: 1px solid;
+    text-align: center;
+}
+
+.min{
+background-color: #08CA3A;
+}
+
+.max{
+background-color: red;
 }
 
 tr{
@@ -242,15 +264,25 @@ header h1 a {
 h3 {
 text-align: center;
 }
-img {
+
+.logo_header {
+    margin-left: 8vw;
+    margin-top: 1vh;
+    position: absolute;
+}
+
+#lock {
     vertical-align: middle;
     border-style: none;
     margin-left: 46vw;
-    margin-top: 4vh;
+    margin-top: 1.6vh;
 }
 
-
-
+#airbox {
+   position: absolute;
+   margin-left: 8vw;
+   margin-top: 1.5vh;
+}
 
 .modal {
   display: none; /* Hidden by default */
@@ -288,4 +320,8 @@ img {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.btnConf {
+display: flex;
 }
