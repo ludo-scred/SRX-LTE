@@ -1,0 +1,1 @@
+C:\Users\lretail\Downloads\pythonProject\Airbox\Scripts\pyinstaller.exe --onefile --icon="C:\Users\lretail\Downloads\pythonProject\HLM\HLM\Sauvegarde\srx.ico" --add-data "static;static" --add-data "templates;templates" C:\Users\lretail\Downloads\pythonProject\HLM\Airbox\app.py

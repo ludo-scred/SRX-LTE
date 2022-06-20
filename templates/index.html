@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart-Rx LTE Tool</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Chart.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dataviz.gauges.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body id="capture">
+                <div id="rf-gauge">
+                    <div id="header" style="width: 25vw; float: left;">
+                    <div id="test" style="width: 12vw; height: 12vw; margin-left: 0vw; float: left;">
+                                                </div>
+                        <div id="buttons" style="margin-left: 12vw; margin-top: 1vh;">
+                    <button id="btnCapture" class="btn warning"
+                            style="width: 11vw; margin-left: 1.2vw;">Capture d'écran</button>
+                    <button id="btnSpeedTest" class="btn btn-primary"
+                            style="width: 11vw; margin-left: 1.2vw;">SpeedTest</button>
+                    <button id="btnInfos" class="btn btn-secondary"
+                            style="width: 11vw; margin-left: 1.2vw;">Informations</button>
+                    <a href="http://127.0.0.1:5000/shutdown"><button id="btnKill" class="btn btn-danger"
+                            style="width: 11vw; margin-left: 1.2vw;">Quitter</button></a>
+                    </div>
+                    </div>
+
+                    <div>
+                        <div id="loading" class="loadingio-spinner-double-ring-ibzxxudhwa" style="display: none;
+                            margin-left: 10vw;">
+                            <div class="ldio-yrl1howkiss">
+                        <div></div>
+                        <div></div>
+                        <div><div></div></div>
+                        <div><div></div></div>
+                        </div></div>
+                        <table id="table1" style="display: none;">
+                            <tr>
+                                <th style="width: 9vw;">DOWN</th>
+                                <th style="width: 9vw;">UP</th>
+                                <th style="width: 7vw;">PING</th>
+                            </tr>
+                            <tr>
+                                <td id="dl"></td>
+                                <td id="up"></td>
+                                <td id="ping"></td>
+                            </tr>
+                        </table>
+                        <table id="table2" style="display: none;">
+                            <tr>
+                                <th style="width: 6vw;">RSRP</th>
+                                <th style="width: 6vw;">RSRQ</th>
+                                <th style="width: 5vw;">RSSI</th>
+                                <th style="width: 4vw;">SINR</th>
+                                <th style="width: 4vw;">RFM</th>
+                            </tr>
+                            <tr>
+                                <td id="trsrp"></td>
+                                <td id="trsrq"></td>
+                                <td id="trssi"></td>
+                                <td id="tsinr"></td>
+                                <td id="rfm"></td>
+
+                            </tr>
+                        </table>
+                        <table id="table3" style="display: none;">
+                            <tr>
+                                <th style="width: 6.5vw;">RSRP(avg)</th>
+                                <th style="width: 6.5vw;">RSRQ(avg)</th>
+                                <th style="width: 6vw;">RSSI(avg)</th>
+                                <th style="width: 6vw;">SINR(avg)</th>
+                            </tr>
+                            <tr>
+                                <td id="arsrp"></td>
+                                <td id="arsrq"></td>
+                                <td id="arssi"></td>
+                                <td id="asinr"></td>
+
+                            </tr>
+                        </table>
+                    </div>
+                    <h1 id="rfmargin">RF-Margin: </h1>
+                    <div id="rf"></div>
+                </div>
+
+    <div class="chart-container">
+        <canvas id="rsrp" class="chart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="rssi" class="chart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="rsrq" class="chart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="sinr" class="chart"></canvas>
+    </div>
+
+
+    <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="close">&times;</span>
+    <p><h3 style="text-align: center;">INFORMATIONS</h3></p>
+      <p><h4>Atténuation du signal suivant la longueur des antennes:</h4></p>
+      <ul>
+        <li>6m : de 0 à -1 dBm </li>
+        <li>20 m : de -3 à -5 dBm</li>
+        <li>2 antennes de 6M misent bout à bout : -10 dBm</li><br><br>
+          <em>A noter que lors d'un speedtest, les résultats sont automatiquement envoyés par mail à l'adresse:
+          airbox@perso.smart-rx.com à des fins d'optimisation des calculs des valeurs.<br>
+              <u>Ces données sont anonymisées.</u>
+          </em>
+</ul>
+  </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='Chart.min.js') }}"></script>
+<script src="{{ url_for('static', filename='chartjs-plugin-zoom.js') }}"></script>
+<script src="{{ url_for('static', filename='dataviz.gauges.min.js') }}"></script>
+<script src="{{ url_for('static', filename='html2canvas.min.js') }}"></script>
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
