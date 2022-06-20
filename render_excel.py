@@ -42,22 +42,22 @@ def generate_template(xlsx, rsrp, arsrp, rsrq, arsrq, rssi, arssi, sinr, asinr, 
     ws = wb.active
 
     # HEADER SIGNAUX
-    ws.merge_cells('A1:E1')
-    set_border(ws, 'A1:E1')
-    set_color(ws, 'A1:E1')
+    ws.merge_cells('A1:J1')
+    set_border(ws, 'A1:J1')
+    set_color(ws, 'A1:J1')
     ws['A1'] = 'SIGNAUX'
     fontstyle = Font(size="14", bold=True)
     ws['A1'].font = fontstyle
     ws['A1'].alignment = Alignment(horizontal='center')
 
     # HEADER SPEEDTEST
-    ws.merge_cells('F1:H1')
-    set_border(ws, 'F1:H1')
-    set_color(ws, 'F1:H1')
-    ws['F1'] = 'SPEEDTEST'
+    ws.merge_cells('K1:L1')
+    set_border(ws, 'K1:L1')
+    set_color(ws, 'K1:L1')
+    ws['K1'] = 'SPEEDTEST'
     fontstyle = Font(size="14", bold=True)
-    ws['F1'].font = fontstyle
-    ws['F1'].alignment = Alignment(horizontal='center')
+    ws['K1'].font = fontstyle
+    ws['K1'].alignment = Alignment(horizontal='center')
 
     # HEADER #2 SIGNAUX
     ws['A2'] = 'RSRP (dBm)'
