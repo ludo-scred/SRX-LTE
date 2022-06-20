@@ -673,7 +673,7 @@ $(document).ready(function() {
                     },
                     ticks: {
                         beginAtZero: false,
-                        min: 0,
+                        min: -5,
                         max: -20,
                         autoSkip: false,
                         maxTicksLimit: 20
