@@ -1,6 +1,5 @@
 import signal
 import xml.parsers.expat
-
 import requests.exceptions
 import urllib3.exceptions
 from huawei_lte_api.Client import Client
@@ -26,13 +25,6 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO, format="%(asctime)s %
 logger = logging.getLogger(__name__)
 
 application = Flask(__name__, static_folder='static')
-
-r_rsrp = ""
-r_rsrq = ""
-r_rssi = ""
-r_sinr = ""
-r_ping = ""
-r_rfm = ""
 
 
 def open_browser():
@@ -63,22 +55,26 @@ def reset_password():
 
 @application.route("/")
 def index() -> str:
-    is_connected = try_airbox_login()
-    error = ""
-    if "OK" in is_connected:
-        return render_template("index.html")
-    if "password" in is_connected:
-        error = "Connexion impossible à la Airbox. Mot de passe incorrect." \
-                    " Veuillez mettre à jour les informations."
-    if "ip" in is_connected:
-        error = "Connexion impossible à la Airbox. Adresse IP introuvable. " \
-                   "Veuillez mettre à jour les informations."
-    if "overrun" in is_connected:
-        error = "Connexion impossible à la Airbox. Trop de tentatives infructueuses." \
-                "Veuillez redémarrer la Airbox."
-    if "router" in is_connected:
-        error = "Connexion impossible à la Airbox. Un autre routeur ayant la même IP est " \
-                "déjà sur le réseau."
+    try:
+        is_connected = try_airbox_login()
+        error = ""
+        if "OK" in is_connected:
+            return render_template("index.html")
+        if "password" in is_connected:
+            error = "Connexion impossible à la Airbox. Mot de passe incorrect." \
+                        " Veuillez mettre à jour les informations."
+        if "ip" in is_connected:
+            error = "Connexion impossible à la Airbox. Adresse IP introuvable. " \
+                       "Veuillez mettre à jour les informations."
+        if "overrun" in is_connected:
+            error = "Connexion impossible à la Airbox. Trop de tentatives infructueuses." \
+                    "Veuillez redémarrer la Airbox."
+        if "router" in is_connected:
+            error = "Connexion impossible à la Airbox. Un autre routeur ayant la même IP est " \
+                    "déjà sur le réseau."
+    except TypeError:
+        error = "Connexion impossible à la Airbox. " \
+                "Veuillez vous assurer qu'elle est bien connectée et allumée."
     config = configparser.RawConfigParser()
     config.read('airbox.cfg')
     details_dict = dict(config.items('DETAILS'))
@@ -235,7 +231,6 @@ def get_rf_margin(rsrp, rsrq, sinr):
     sinr_max = 20
     sinr_min = 0
     perc_list = []
-
     if rsrp <= 80:
         perc_list.append(100)
     else:
@@ -248,7 +243,6 @@ def get_rf_margin(rsrp, rsrq, sinr):
         perc_list.append(100)
     else:
         perc_list.append(magic_formula(sinr, sinr_min, sinr_max))
-
     return get_average(perc_list)
 
 
@@ -274,8 +268,16 @@ def ping_google():
     msLine = result[-1].strip()
     return msLine.split(' = ')[-1]
 
+def check_if_conf_exists():
+    try:
+        file = open("airbox.cfg", 'r')
+    except IOError:
+        with open("airbox.cfg", 'w') as f:
+            f.write('[DETAILS]\nip_addr = 192.168.1.1\nlogin = admin\npassword = Cegedim1')
+
 
 def try_airbox_login():
+    check_if_conf_exists()
     config = configparser.RawConfigParser()
     config.read('airbox.cfg')
     details_dict = dict(config.items('DETAILS'))

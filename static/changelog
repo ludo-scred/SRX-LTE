@@ -8,4 +8,8 @@ V0.11 (20-06-2022)
 - Ajout d'un tableau récapitulatif avec les signaux min/max dans le bouton "informations"
 
 V0.12 (20-06-2022)
-- Prise en charge de multiples erreurs si un autre huawei répond et si l'ip n'est pas un routeur.
+- Prise en charge de multiples erreurs si un autre huawei répond ou si l'ip n'est pas un routeur.
+- Prise en charge de l'erreur si la airbox n'est pas branchée.
+
+V0.13 (21-06-2022)
+- Si le fichier de configuration n'est pas présent, l'outil en génère un par défaut.
